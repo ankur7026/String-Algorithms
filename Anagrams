@@ -1,0 +1,30 @@
+package main;
+
+import java.util.Scanner;
+
+public class FindAllAnagram {
+	
+	public static void main(String[] Args)
+	{
+		Scanner scan=new Scanner(System.in);
+		String string=scan.next();
+		findAnagrams(string.toCharArray(),0,string.length());
+	}
+	
+	private static void findAnagrams(char[] tempArray, int k, int n)
+	{
+		if(k==n)
+			System.out.println(tempArray);
+		else
+		{
+			for(int i=k;i<n;i++)
+			{
+				char temp=tempArray[i];tempArray[i]=tempArray[k];tempArray[k]=temp;
+				findAnagrams(tempArray,k+1,n);
+				char temp1=tempArray[i];tempArray[i]=tempArray[k];tempArray[k]=temp1;
+			}
+		}
+		 
+	}
+
+}
